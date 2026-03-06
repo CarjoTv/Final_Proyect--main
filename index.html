@@ -10,15 +10,15 @@
 </head>
 <body class="font-sans bg-white">
 
-    <header class="p-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
-        <img src="./src/images/icons/logo-f7862584.svg" alt="logo" class="h-6">
-        
-        <div id="open-search" class="flex items-center shadow-md border border-gray-100 rounded-2xl overflow-hidden cursor-pointer divide-x">
-            <div class="px-4 py-3 text-sm" id="display-location">Add location</div>
-            <div class="px-4 py-3 text-sm text-gray-400" id="display-guests-count">Add guests</div>
-            <div class="px-4 py-3"><span class="material-icons text-[#EB5757]">search</span></div>
-        </div>
-    </header>
+    <header class="p-6 md:px-16 flex flex-row justify-between items-center">
+    <img src="./src/images/icons/logo-f7862584.svg" alt="logo" class="h-6">
+    
+    <div id="open-search" class="flex items-center shadow-md border border-gray-100 rounded-2xl overflow-hidden cursor-pointer divide-x bg-white">
+        <div class="px-4 py-3 text-sm min-w-30" id="display-location">Add location</div>
+        <div class="px-4 py-3 text-sm text-gray-400 min-w-30" id="display-guests-count">Add guests</div>
+        <div class="px-4 py-3"><span class="material-icons text-[#EB5757]">search</span></div>
+    </div>
+</header>
 
     <div id="search-modal" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity">
         <div class="bg-white w-full p-6 md:p-16 h-auto shadow-2xl animate-slide-down">
@@ -78,14 +78,14 @@
     </div>
 
     <main class="max-w-7xl mx-auto p-6 md:px-16 mt-4">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold text-gray-800" id="location-title">Stays in Finland</h2>
-            <span id="counter" class="text-gray-600 text-sm font-medium">12+ stays</span>
-        </div>
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-800" id="location-title">Stays in Finland</h2>
+        <span id="counter" class="text-gray-600 text-sm font-medium">12+ stays</span>
+    </div>
 
-        <div id="stays-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            </div>
-    </main>
+    <div id="stays-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+    </div>
+</main>
 
 </body>
 </html>
