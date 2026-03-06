@@ -1,4 +1,7 @@
 
+    /**
+     * @description Toma un objeto "stay" (alojamiento) y devuelve un bloque de HTML que representa una tarjeta con la información del alojamiento. Incluye la foto, el título, el tipo de alojamiento, si es "Super Host", el número de camas y la calificación. Esta función es llamada para cada alojamiento que se quiere mostrar en la interfaz.
+     */
 export const createCard = (stay) => {
     const superHost = stay.superHost 
         ? `<span class="border border-gray-800 text-[10px] font-bold px-2 py-1 rounded-xl uppercase text-gray-800">Super Host</span>` 
@@ -31,6 +34,9 @@ export const createCard = (stay) => {
 
 // Función para obtener ciudades únicas de los stays
 //Sirve mucho el SET para eliminar duplicados 
+/** 2
+ *  @description Su trabajo es limpiar la lista de datos para que el menú desplegable no aparezca la misma ciudad repetida varias veces.
+ */
 export const getUniqueCities = (stays) => {
     const cities = [...new Set(stays.map(stay => stay.city))];
     return cities.sort();

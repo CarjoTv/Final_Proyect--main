@@ -32,6 +32,9 @@ let adults = 0;
 let children = 0;
 let selectedCity = "";
 
+/** 1
+ * @description Genera la lista de ciudades. Busca todas las ciudades disponibles en los datos, las "dibuja" en el menú desplegable y configura que, al hacer clic en una, se seleccione y se cierre la lista.
+ */
 // LÓGICA DE CIUDADES
 function setupCities() {
   const cities = getUniqueCities(stays);
@@ -60,7 +63,9 @@ function setupCities() {
 cityInput.addEventListener("click", () =>
   locationList.classList.toggle("hidden"),
 );
-
+/** 2
+ * @description Configura la lógica de los huéspedes: al hacer clic en los botones de suma o resta, se actualiza el número de adultos o niños, se muestra el total en el input y se filtran los resultados en tiempo real.
+ */
 // LÓGICA DE HUÉSPEDES
 function updateGuests() {
   const total = adults + children;
@@ -96,7 +101,11 @@ document.querySelector("#child-minus").addEventListener("click", () => {
   updateGuests();
 });
 
+/** 3
+ * @description Es la "dibujante" de la interfaz. Toma una lista de alojamientos y los convierte en tarjetas (cards) visibles. También se encarga de actualizar el contador de "stays" y el título de la ubicación (ej: "Stays in Helsinki"). Además, es llamada cada vez que se realiza una búsqueda o se cambia el número de huéspedes, para mostrar solo los resultados que coinciden con los criterios seleccionados.
+ */
 // RENDERIZADO Y FILTRADO
+
 function renderStays(items) {
   // Dibujar las cards
   container.innerHTML = items.map((stay) => createCard(stay)).join("");
@@ -110,7 +119,9 @@ function renderStays(items) {
     ? `Stays in ${selectedCity}`
     : "Stays in Finland";
 }
-
+/** 4
+ * @description Es el cerebro del filtro. Revisa qué ciudad se eligio y cuántos huéspedes son en total. Luego, filtra la base de datos original para dejar solo los lugares que cumplen con ambos requisitos y le pasa ese resultado a renderStays.
+ */
 function handleSearch() {
   const totalGuests = adults + children;
 
