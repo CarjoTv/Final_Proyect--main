@@ -1,7 +1,7 @@
 import { stays } from './stays.js';
 import { createCard, getUniqueCities } from './utils.js';
 
-// --- ELEMENTOS DEL DOM ---
+// ELEMENTOS DEL DOM 
 const modal = document.querySelector('#search-modal');
 const openSearch = document.querySelector('#open-search');
 const cityInput = document.querySelector('#city-input');
@@ -9,13 +9,22 @@ const locationList = document.querySelector('#location-list');
 const guestsDisplay = document.querySelector('#guests-display');
 const container = document.querySelector('#stays-container');
 const counterText = document.querySelector('#counter');
+const closeSearch = document.querySelector('#close-search');
+
+// Boton de cerrar modal en movil (X)
+
+if (closeSearch) {
+    closeSearch.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+}
 
 // Variables de estado
 let adults = 0;
 let children = 0;
 let selectedCity = "";
 
-// --- LÓGICA DEL MODAL ---
+// LÓGICA DEL MODAL
 openSearch.addEventListener('click', () => modal.classList.remove('hidden'));
 
 // Cerrar si haces clic fuera del contenido blanco
@@ -23,7 +32,7 @@ modal.addEventListener('click', (e) => {
     if (e.target === modal) modal.classList.add('hidden');
 });
 
-// --- LÓGICA DE CIUDADES ---
+// LÓGICA DE CIUDADES
 function setupCities() {
     const cities = getUniqueCities(stays);
     locationList.innerHTML = cities.map(city => `
@@ -39,7 +48,7 @@ function setupCities() {
             cityInput.value = `${selectedCity}, Finland`;
             locationList.classList.add('hidden');
             
-            // ACTUALIZACIÓN EN TIEMPO REAL
+            // ACTUALIZACIÓN EN TIEMPO REAL YA LO AGREGUE 
             handleSearch(); 
         });
     });
@@ -47,7 +56,7 @@ function setupCities() {
 
 cityInput.addEventListener('click', () => locationList.classList.toggle('hidden'));
 
-// --- LÓGICA DE HUÉSPEDES ---
+// LÓGICA DE HUÉSPEDES 
 function updateGuests() {
     const total = adults + children;
     
@@ -70,7 +79,7 @@ document.querySelector('#adult-minus').addEventListener('click', () => { if(adul
 document.querySelector('#child-plus').addEventListener('click', () => { children++; updateGuests(); });
 document.querySelector('#child-minus').addEventListener('click', () => { if(children > 0) children--; updateGuests(); });
 
-// --- RENDERIZADO Y FILTRADO ---
+// RENDERIZADO Y FILTRADO
 function renderStays(items) {
     // Dibujar las cards
     container.innerHTML = items.map(stay => createCard(stay)).join('');
@@ -99,7 +108,7 @@ function handleSearch() {
     document.querySelector('#display-location').textContent = selectedCity ? `${selectedCity}, Finland` : "Add location";
 }
 
-// --- INICIO ---
+// INICIO 
 setupCities();
 renderStays(stays); // Carga inicial con todos los datos
 
@@ -111,3 +120,5 @@ if(searchBtn) {
         modal.classList.add('hidden');
     });
 }
+
+//Si ocurre un error en mostrar las cartas, la verdad no se porque ocurre pero son cosas del VITE. 
